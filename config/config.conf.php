@@ -6,7 +6,7 @@ $conf = array(
     'DB_NAME' => "mvcteste",
     'USER_NAME' => "root",
     'PASSWORD' => "root",
-    'DEFAULT_CONTROLLER' => "ControleUsuario",
-    'DEFAULT_METHOD' => "listaDeUsuario",
+    'DEFAULT_CONTROLLER' => "ControleMenu",
+    'DEFAULT_METHOD' => "inicio",
      'PATH_UPLOADS' => "./uploads/",
 );

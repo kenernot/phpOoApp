@@ -26,3 +26,14 @@
 [01-Nov-2016 04:11:58 Europe/Paris] PHP   3. Login->autenticar() C:\wamp\www\mvc-php\libs\TApp.php:63
 [01-Nov-2016 04:11:58 Europe/Paris] PHP   4. TGui->renderizar() C:\wamp\www\mvc-php\to\Login.php:18
 [01-Nov-2016 04:11:58 Europe/Paris] PHP   5. include_once() C:\wamp\www\mvc-php\libs\TGui.php:19
+[16-Oct-2018 22:31:11 America/Sao_Paulo] PHP Fatal error:  Call to undefined method Empresa::setStatus() in C:\wamp64\www\video-aula-php-mvc\to\ControleEmpresa.php on line 52
+[16-Oct-2018 22:31:11 America/Sao_Paulo] PHP Stack trace:
+[16-Oct-2018 22:31:11 America/Sao_Paulo] PHP   1. {main}() C:\wamp64\www\video-aula-php-mvc\public\index.php:0
+[16-Oct-2018 22:31:11 America/Sao_Paulo] PHP   2. TApp->executar() C:\wamp64\www\video-aula-php-mvc\public\index.php:37
+[16-Oct-2018 22:31:11 America/Sao_Paulo] PHP   3. ControleEmpresa->salvar() C:\wamp64\www\video-aula-php-mvc\libs\TApp.php:63
+[16-Oct-2018 22:33:45 America/Sao_Paulo] PHP Fatal error:  Call to undefined method Empresa::getIdEmpresaId() in C:\wamp64\www\video-aula-php-mvc\dao\DaoEmpresa.php on line 57
+[16-Oct-2018 22:33:45 America/Sao_Paulo] PHP Stack trace:
+[16-Oct-2018 22:33:45 America/Sao_Paulo] PHP   1. {main}() C:\wamp64\www\video-aula-php-mvc\public\index.php:0
+[16-Oct-2018 22:33:45 America/Sao_Paulo] PHP   2. TApp->executar() C:\wamp64\www\video-aula-php-mvc\public\index.php:37
+[16-Oct-2018 22:33:45 America/Sao_Paulo] PHP   3. ControleEmpresa->salvar() C:\wamp64\www\video-aula-php-mvc\libs\TApp.php:63
+[16-Oct-2018 22:33:45 America/Sao_Paulo] PHP   4. DaoEmpresa->salvar() C:\wamp64\www\video-aula-php-mvc\to\ControleEmpresa.php:55

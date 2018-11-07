@@ -7,7 +7,7 @@
  */
 class DaoUsuario implements IDao {
 
-    public function excluir(Usuario $u) {
+    public function excluir($u) {
         $sql = "delete FROM usuario where id=:ID";
         $conexao = Conexao::getConexao();
         $sth = $conexao->prepare($sql);
@@ -28,7 +28,7 @@ class DaoUsuario implements IDao {
      */
     public function listar($p1) {
 
-        $sql = "SELECT id, nome, login, senha, status, thumbnail_path FROM usuario where id=:ID";
+        $sql = "SELECT id, nome, login, senha, status, thumbnail_path, idempresa FROM usuario where id=:ID";
         $conexao = Conexao::getConexao();
         $sth = $conexao->prepare($sql);
         $sth->bindParam("ID", $p1);
@@ -38,6 +38,12 @@ class DaoUsuario implements IDao {
             echo $exc->getMessage();
         }
         $usu = $sth->fetchObject("Usuario");
+        $demp = new DaoEmpresa();
+        if ($usu->idempresa) {
+            $emp =  $demp->listar($usu->idempresa); 
+            $usu->setEmpresa($emp);
+        }
+        
         return $usu;
     }
 
@@ -82,7 +88,7 @@ class DaoUsuario implements IDao {
         return $arUsu;
     }
 
-    public function salvar(Usuario $u) {
+    public function salvar($u) {
         $nome = $u->getNome();
         $login = $u->getLogin();
         $senha = $u->getSenha();

@@ -7,6 +7,7 @@
     $status = "";
 
     $usuario = $this->getDados("usuario");
+    $empresas = $this->getDados("empresas");
     if ($usuario) {
         $usuario instanceof Usuario;
         $id = $usuario->getId();
@@ -42,6 +43,27 @@
                 echo 'selected="true"';
             }
             ?>>Inativo</option>
+        </select>
+        <label>Empresas</label>
+        <select class="form-control" name="empresa">
+            <?php
+            foreach ($empresas as $emp) :
+                $emp instanceof Empresa;
+                ?>
+                <otpion <?php
+                if (
+                        ($usuario->getEmpresa() instanceof Empresa) &&
+                        ($usuario->getEmpresa()->getIdEmpresa() === $emp->getIdEmpresa())
+                ):
+                    ?>
+                        selected ="selected"
+
+                        <?php
+                    endif;
+                    ?> value="<?= $emp->getIdEmpresa() ?>"><?= $emp->getNome() ?> </option>
+                        <?php
+                    endforeach;
+                    ?>
         </select>
         <hr/>
         <div class="container">
