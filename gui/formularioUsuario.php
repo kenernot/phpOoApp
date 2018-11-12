@@ -19,6 +19,7 @@
         if ($thumbPath == null || trim($thumbPath) == '') {
             $thumbPath = './img/noimage.png';
         }
+        $empresa = $usuario->getEmpresa();
     }
     ?>
 
@@ -50,7 +51,7 @@
             foreach ($empresas as $emp) :
                 $emp instanceof Empresa;
                 ?>
-                <otpion <?php
+                <option <?php
                 if (
                         ($usuario->getEmpresa() instanceof Empresa) &&
                         ($usuario->getEmpresa()->getIdEmpresa() === $emp->getIdEmpresa())
@@ -61,9 +62,9 @@
                         <?php
                     endif;
                     ?> value="<?= $emp->getIdEmpresa() ?>"><?= $emp->getNome() ?> </option>
-                        <?php
-                    endforeach;
-                    ?>
+                    <?php
+                endforeach;
+                ?>
         </select>
         <hr/>
         <div class="container">

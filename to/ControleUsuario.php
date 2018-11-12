@@ -27,7 +27,7 @@ class ControleUsuario implements IPrivateTO {
 
     private function getEmpresas() {
         $de = new DaoEmpresa();
-        return $de->listarTodos(); 
+        return $de->listarTodos();
     }
 
     public function novo() {
@@ -74,12 +74,19 @@ class ControleUsuario implements IPrivateTO {
         if (!$status || trim($status) == "") {
             throw new Exception("O campo status é obrigatório!");
         }
+        $empresa = isset($_POST['empresa']) ? $_POST['empresa'] : FALSE;
+        if (!$empresa || trim($empresa) == "") {
+            throw new Exception("O campo empresa é obrigatório!");
+        }
         $u->setNome($nome);
         $u->setLogin($login);
         $u->setSenha($senha);
         $u->setStatus($status);
         $u->setThumbnail_path($uploadfile);
+        $daoEmp = new DaoEmpresa();
+        $u->setEmpresa($daoEmp->listar($empresa));
 
+        
         $du = new DaoUsuario();
         $usu = $du->salvar($u);
 

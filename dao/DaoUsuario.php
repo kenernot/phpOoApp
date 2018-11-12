@@ -40,10 +40,10 @@ class DaoUsuario implements IDao {
         $usu = $sth->fetchObject("Usuario");
         $demp = new DaoEmpresa();
         if ($usu->idempresa) {
-            $emp =  $demp->listar($usu->idempresa); 
+            $emp = $demp->listar($usu->idempresa);
             $usu->setEmpresa($emp);
         }
-        
+
         return $usu;
     }
 
@@ -72,7 +72,7 @@ class DaoUsuario implements IDao {
     }
 
     public function listarTodos() {
-        $sql = "SELECT id, nome, login, senha, status, thumbnail_path FROM usuario";
+        $sql = "SELECT id, nome, login, senha, status, thumbnail_path, idempresa FROM usuario";
         $conexao = Conexao::getConexao();
         $sth = $conexao->prepare($sql);
         try {
@@ -82,28 +82,31 @@ class DaoUsuario implements IDao {
         }
         $arUsu = array();
         while ($usu = $sth->fetchObject("Usuario")) {
-
+            $demp = new DaoEmpresa();
+            if ($usu->idempresa) {
+                $emp = $demp->listar($usu->idempresa);
+                $usu->setEmpresa($emp);
+            }
             $arUsu[] = $usu;
         }
         return $arUsu;
     }
 
     public function salvar($u) {
+        $id = 0;
         $nome = $u->getNome();
         $login = $u->getLogin();
         $senha = $u->getSenha();
         $status = $u->getStatus();
         $thumb = $u->getThumbnail_path();
-
+        $idempresa = $u->getEmpresa()->getIdEmpresa();
         if ($u->getId()) {
             $id = $u->getId();
             $sql = "update usuario set nome=:nome, login=:login, senha=:senha, "
-                    . "status=:status, thumbnail_path=:thumbnail_path where id=:id";
+                    . "status=:status, thumbnail_path=:thumbnail_path, idempresa=:idempresa where id=:id";
         } else {
-            $id = $this->generateID();
-            $u->setId($id);
-            $sql = "insert into usuario(id,nome,login,senha,status, thumbnail_path) values "
-                    . "(:id,:nome, :login,:senha,:status, :thumbnail_path)";
+            $sql = "insert into usuario(id,nome,login,senha,status, thumbnail_path, idempresa) values "
+                    . "(:id,:nome, :login,:senha,:status, :thumbnail_path, :idempresa);";
         }
         $cnx = Conexao::getConexao();
         $sth = $cnx->prepare($sql);
@@ -113,30 +116,14 @@ class DaoUsuario implements IDao {
         $sth->bindParam("senha", $senha);
         $sth->bindParam("status", $status);
         $sth->bindParam("thumbnail_path", $thumb);
+        $sth->bindParam("idempresa", $idempresa);
+        
         try {
             $sth->execute();
             return $u;
         } catch (Exception $exc) {
             return $exc->getMessage();
         }
-    }
-
-    /**
-     * 
-     * @return int
-     */
-    private function generateID() {
-        $sql = "select (coalesce(max(id),0)+1) as ID from usuario";
-        $cnx = Conexao::getConexao();
-        $sth = $cnx->prepare($sql);
-        try {
-            $sth->execute();
-        } catch (Exception $exc) {
-            return $exc->getMessage();
-        }
-        $res = $sth->fetch();
-        $id = $res['ID'];
-        return $id;
     }
 
     public function autenticar($login, $senha) {

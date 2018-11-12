@@ -37,3 +37,28 @@
 [16-Oct-2018 22:33:45 America/Sao_Paulo] PHP   2. TApp->executar() C:\wamp64\www\video-aula-php-mvc\public\index.php:37
 [16-Oct-2018 22:33:45 America/Sao_Paulo] PHP   3. ControleEmpresa->salvar() C:\wamp64\www\video-aula-php-mvc\libs\TApp.php:63
 [16-Oct-2018 22:33:45 America/Sao_Paulo] PHP   4. DaoEmpresa->salvar() C:\wamp64\www\video-aula-php-mvc\to\ControleEmpresa.php:55
+[12-Nov-2018 20:00:52 America/Sao_Paulo] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in C:\wamp64\www\video-aula-php-mvc\dao\DaoCategoria.php on line 69
+[12-Nov-2018 20:00:52 America/Sao_Paulo] PHP Stack trace:
+[12-Nov-2018 20:00:52 America/Sao_Paulo] PHP   1. {main}() C:\wamp64\www\video-aula-php-mvc\public\index.php:0
+[12-Nov-2018 20:00:52 America/Sao_Paulo] PHP   2. TApp->executar() C:\wamp64\www\video-aula-php-mvc\public\index.php:37
+[12-Nov-2018 20:00:52 America/Sao_Paulo] PHP   3. ControleCategoria->salvar() C:\wamp64\www\video-aula-php-mvc\libs\TApp.php:63
+[12-Nov-2018 20:00:52 America/Sao_Paulo] PHP   4. DaoCategoria->salvar() C:\wamp64\www\video-aula-php-mvc\to\ControleCategoria.php:50
+[12-Nov-2018 20:00:53 America/Sao_Paulo] PHP   5. PDOStatement->execute() C:\wamp64\www\video-aula-php-mvc\dao\DaoCategoria.php:69
+[12-Nov-2018 20:03:07 America/Sao_Paulo] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in C:\wamp64\www\video-aula-php-mvc\dao\DaoCategoria.php on line 69
+[12-Nov-2018 20:03:08 America/Sao_Paulo] PHP Stack trace:
+[12-Nov-2018 20:03:08 America/Sao_Paulo] PHP   1. {main}() C:\wamp64\www\video-aula-php-mvc\public\index.php:0
+[12-Nov-2018 20:03:08 America/Sao_Paulo] PHP   2. TApp->executar() C:\wamp64\www\video-aula-php-mvc\public\index.php:37
+[12-Nov-2018 20:03:08 America/Sao_Paulo] PHP   3. ControleCategoria->salvar() C:\wamp64\www\video-aula-php-mvc\libs\TApp.php:63
+[12-Nov-2018 20:03:08 America/Sao_Paulo] PHP   4. DaoCategoria->salvar() C:\wamp64\www\video-aula-php-mvc\to\ControleCategoria.php:50
+[12-Nov-2018 20:03:08 America/Sao_Paulo] PHP   5. PDOStatement->execute() C:\wamp64\www\video-aula-php-mvc\dao\DaoCategoria.php:69
+[12-Nov-2018 20:31:26 America/Sao_Paulo] PHP Fatal error:  Call to a member function getIdEmpresa() on null in C:\wamp64\www\video-aula-php-mvc\dao\DaoUsuario.php on line 101
+[12-Nov-2018 20:31:26 America/Sao_Paulo] PHP Stack trace:
+[12-Nov-2018 20:31:26 America/Sao_Paulo] PHP   1. {main}() C:\wamp64\www\video-aula-php-mvc\public\index.php:0
+[12-Nov-2018 20:31:26 America/Sao_Paulo] PHP   2. TApp->executar() C:\wamp64\www\video-aula-php-mvc\public\index.php:37
+[12-Nov-2018 20:31:26 America/Sao_Paulo] PHP   3. ControleUsuario->salvar() C:\wamp64\www\video-aula-php-mvc\libs\TApp.php:63
+[12-Nov-2018 20:31:26 America/Sao_Paulo] PHP   4. DaoUsuario->salvar() C:\wamp64\www\video-aula-php-mvc\to\ControleUsuario.php:84
+[12-Nov-2018 21:25:19 America/Sao_Paulo] PHP Notice:  Undefined variable: variavel in C:\wamp64\www\video-aula-php-mvc\to\ControleProduto.php on line 52
+[12-Nov-2018 21:25:19 America/Sao_Paulo] PHP Stack trace:
+[12-Nov-2018 21:25:19 America/Sao_Paulo] PHP   1. {main}() C:\wamp64\www\video-aula-php-mvc\public\index.php:0
+[12-Nov-2018 21:25:19 America/Sao_Paulo] PHP   2. TApp->executar() C:\wamp64\www\video-aula-php-mvc\public\index.php:37
+[12-Nov-2018 21:25:19 America/Sao_Paulo] PHP   3. ControleProduto->salvar() C:\wamp64\www\video-aula-php-mvc\libs\TApp.php:63
